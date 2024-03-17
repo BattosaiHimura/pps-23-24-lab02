@@ -1,6 +1,7 @@
 package task5
 
 import scala.PartialFunction.OrElse
+import scala.compiletime.ops.boolean
 
 
 object Optionals:
@@ -67,3 +68,13 @@ object Optionals:
       case Empty() => Empty()
       case Maybe(value: A) => Optional.Maybe(f(value))
     
+    /**
+      * filter keeps the value of the optional only if it satisfies a given predicate, otherwise it returns Empty.
+      *
+      * @param optional the optional to verify against the predicate
+      * @param f the predicate function to use as a filter
+      * @return the given optional if it satisfies the predicate, Empty otherwise
+      */
+    def filter[A](optional: Optional[A], f: A => Boolean): Optional[A] = optional match
+      case Maybe(value: A) if f(value) => optional
+      case _ => Empty()
