@@ -13,9 +13,9 @@ object Lab02 extends App :
         case n if  n >= 0 => "positive"
         case n if n < 0 => "negative"
 
-    println(positiveLambda(1)) // true
-    println(positiveLambda(0)) // true
-    println(positiveLambda(-1)) // false
+    println(positiveLambda(1)) // positive
+    println(positiveLambda(0)) // positive
+    println(positiveLambda(-1)) // negative
 
 
     // method
@@ -23,9 +23,9 @@ object Lab02 extends App :
         case n if n >= 0 => "positive"
         case n if n < 0 => "negative"
 
-    println(positiveFunc(1)) // true
-    println(positiveFunc(0)) // true
-    println(positiveFunc(-1)) // false
+    println(positiveFunc(1)) // positive
+    println(positiveFunc(0)) // positive
+    println(positiveFunc(-1)) // negative
 
     // Negative 
     // Lambda
@@ -96,7 +96,7 @@ object Lab02 extends App :
     def halve: Double => Double = _ / 2
     def dec: Double => Double = _ - 1
 
-    println(compose(dec, double)(5)) // 9
+    println(compose(dec, double)(5)) // 9.0
     println(compose(halve, dec)(10)) // 4,5
     //-------------------------------------------------------------------------------
 
@@ -109,6 +109,8 @@ object Lab02 extends App :
 
     println(gcd(12, 8)) // 4
     println(gcd(7, 14)) // 7
+    println(gcd(3, 0)) // 3
+    println(gcd(0, 11)) // 11
     //-------------------------------------------------------------------------------
 
     // TASK 4, svolto in autonomia
@@ -126,6 +128,17 @@ object Lab02 extends App :
             case Square(side) => Square(side * alpha)
             case Rectangle(base, height) => Rectangle(base * alpha, height * alpha)
             case Circle(radius) => Circle(radius * alpha)
+
+    import consegna.Lab02.Shape.*
+
+    println(perimeter(Shape.Square(10))) // 40
+    println(perimeter(scale(Shape.Square(10), 3))) // 120
+
+    println(perimeter(Shape.Rectangle(4, 2))) // 12
+    println(perimeter(scale(Shape.Rectangle(3, 6), 2))) // 36
+
+    println(perimeter(Shape.Circle(1))) // 2Pi
+    println(perimeter(scale(Shape.Circle(1), 2))) // Pi * 2
     //-------------------------------------------------------------------------------
 
     // TASK 5, svolto in autonomia
