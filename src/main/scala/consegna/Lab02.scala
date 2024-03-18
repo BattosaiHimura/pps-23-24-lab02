@@ -144,7 +144,7 @@ object Lab02 extends App :
     // TASK 5, svolto in autonomia
     import task5.Optionals.Optional
     import task5.Optionals.Optional.*
-    
+
     def map[A, B](optional: Optional[A], f: A => B): Optional[B] = optional match
       case Empty() => Optional.Empty()
       case Maybe(value: A) => Optional.Maybe(f(value))
